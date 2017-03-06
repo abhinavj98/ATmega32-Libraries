@@ -54,6 +54,13 @@ void USART_TransmitString(char *str)
 }
 
 void USART_TransmitNumber(unsigned long n){
+
+  if(n<0)
+{
+    USART_Transmitchar('-');
+    n=(-1)*n;
+}
+
   if(n >= 10){
     USART_TransmitNumber(n/10);
     n = n%10;
